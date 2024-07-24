@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html area="sea" device="pc" mi18n-lang="zh-tw" sea-lang="false"
+  style="font-size: 58.7037px; height: 100%; overflow: hidden">
+
+<head>
+  <title>原神回歸時間計算</title>
+  <link id="icon" rel="shortcut icon" href="https://genshin.hoyoverse.com/favicon.ico">
+  <link rel="stylesheet"
+    href="https://act.hoyoverse.com/ys/event/e20240413preview-pvtga2/styles_7654e533d9a302126101.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @font-face {
+      font-family: font;
+      src: url("https://act.hoyoverse.com/ys/event/survey-collection/fonts/default.4b9a2491.ttf"),
+        url("https://act-webstatic.hoyoverse.com/font_generate/m20240402hy38ctieps_hk4e_global_zh-tw_7qqgft.woff2"),
+        url("https://act-webstatic.hoyoverse.com/font_generate/m20240402hy38ctieps_hk4e_global_zh-tw_7qqgft.woff");
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #0c0f1d;
+        color: white;
+      }
+    }
+  </style>
+</head>
+
+<body onload="startTime()">
+  <div class="src-components-hippo-modals-Reward-__index_---container---zjR_sr">
+    <div class="src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf">
+      <div class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="user-select: text!important;">
+          觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select: text!important;"><a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 圖片及字型皆取自<a href="https://hoyo.link/dBOiFLAL" target="_blank">©原神官方先行展示網頁</a>
+        </div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_941631976---YeiL8w" style="background-image: none;">
+          <div class="src-components-hippo-modals-Reward-__index_---h_94163570---p3KweJ">下次登出時間</div>
+        </div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select: text!important;">🖱️複製後計算</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select: text!important;">🖱️複製後計算</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/31039303" target="_blank" title="用途?">當前時戳<i class="fa-solid fa-circle-question"></i></a></div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD" style="user-select: text!important;">⚙️載入中...</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB" onclick="copyNow(`h_94163802---DtaAdD`)">📋複製</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW"
+          style="background-image: url(title-zh-tw.png);">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const q = ".src-components-hippo-modals-Reward-__index_---";
+    function startTime() {
+      document.querySelector(q+'h_94163802---DtaAdD').innerText = parseInt(Date.now() / 1e3);
+      setTimeout(startTime, 1e3 - new Date() % 1e3);
+    }
+    function copyNow(query) {
+      const copyText = document.querySelector(q+query);
+      navigator.clipboard.writeText(copyText.innerText);
+      const ctime = copyText.innerText*1e3, options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }, d1 = 1e3*60*60*24;
+      document.querySelector(q+`h_941631471---Fwl8Ur`).innerText
+       = `已複製｢${copyText.innerText}｣ (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
+      document.querySelector(q+`h_94163605---q029wX`).innerText
+       = `兩個禮拜以後 ${parseInt(new Date(d1*14+ctime)/1e3)} (${new Date(d1*14+ctime).toLocaleTimeString(undefined, options)})`;// 14d after
+      document.querySelector(q+`h_94163674---_GTw_j`).innerText
+       = `${parseInt(new Date(d1*(45-14)+ctime)/1e3)} (${new Date(d1*(45-14)+ctime).toLocaleTimeString(undefined, options)})`;// quit
+      document.querySelector(q+`h_94163738---UoBAHO`).innerText
+       = `${parseInt(new Date(d1*45+ctime)/1e3)} (${new Date(d1*45+ctime).toLocaleTimeString(undefined, options)})`;// back
+    }
+  </script>
+</body>
+
+</html>
