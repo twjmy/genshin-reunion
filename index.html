@@ -8,6 +8,7 @@
   <link rel="stylesheet"
     href="https://act.hoyoverse.com/ys/event/e20240413preview-pvtga2/styles_7654e533d9a302126101.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://webstatic.hoyoverse.com/dora/biz/mihoyo-browser-tips/v1/main.js"></script>
   <style>
     @font-face {
       font-family: font;
@@ -72,19 +73,8 @@
       document.querySelector(q+`h_94163738---UoBAHO`).innerText
        = `${parseInt(new Date(d1*45+ctime)/1e3)} (${new Date(d1*45+ctime).toLocaleTimeString(undefined, options)})`;// back
     }
-    // https://worktile.com/kb/ask/809170.html
-    function lockScreenOrientation() {
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape');
-      } else if (screen.mozLockOrientation) {
-        screen.mozLockOrientation('landscape');
-      } else if (screen.msLockOrientation) {
-        screen.msLockOrientation('landscape');
-      } else if (screen.orientation && screen.orientation.setLock) {
-        screen.orientation.setLock('landscape');
-      }
-    }
   </script>
+  <script src="https://webstatic.hoyoverse.com/dora/biz/mihoyo-browser-tips/v1/main.js"></script>
 </body>
 
 </html>
