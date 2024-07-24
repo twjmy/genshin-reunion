@@ -16,10 +16,24 @@
         url("https://act-webstatic.hoyoverse.com/font_generate/m20240402hy38ctieps_hk4e_global_zh-tw_7qqgft.woff2"),
         url("https://act-webstatic.hoyoverse.com/font_generate/m20240402hy38ctieps_hk4e_global_zh-tw_7qqgft.woff");
     }
+
     @media (prefers-color-scheme: dark) {
       html, body {
         background-color: #0c0f1d;
         color: white;
+      }
+    }
+    
+    @media only screen and (orientation: portrait) {
+      body {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        overflow-x: hidden;
+        position: fixed;
+        top: 100%;
+        left: 0;
       }
     }
   </style>
