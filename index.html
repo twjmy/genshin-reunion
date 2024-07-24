@@ -80,7 +80,7 @@
        = `已複製｢${copyText.innerText}｣ (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
       document.querySelector(q+`h_94163605---q029wX`).innerHTML
        = `兩個禮拜以後 ${parseInt(new Date(d1*14+ctime)/1e3)} (${new Date(d1*14+ctime).toLocaleTimeString(undefined, options)})
-       <br>31天前 ${parseInt(new Date(ctime-d1*31)/1e3)} (${new Date(d1*14+ctime).toLocaleTimeString(undefined, options)})`;// 14d after
+       <br>31天前 ${parseInt(new Date(ctime-d1*31)/1e3)} (${new Date(ctime-d1).toLocaleTimeString(undefined, options)})`;// 14d after
       document.querySelector(q+`h_94163674---_GTw_j`).innerText
        = `${parseInt(new Date(d1*(45-14)+ctime)/1e3)} (${new Date(d1*(45-14)+ctime).toLocaleTimeString(undefined, options)})`;// quit
       document.querySelector(q+`h_94163738---UoBAHO`).innerText
