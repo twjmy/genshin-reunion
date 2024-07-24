@@ -35,7 +35,7 @@
   </style>
 </head>
 
-<body onload="startTime();lockScreenOrientation()">
+<body onload="startTime()">
   <div class="src-components-hippo-modals-Reward-__index_---container---zjR_sr">
     <div class="src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf">
       <div class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
@@ -81,18 +81,6 @@
        = `${parseInt(new Date(d1*(45-14)+ctime)/1e3)} (${new Date(d1*(45-14)+ctime).toLocaleTimeString(undefined, options)})`;// quit
       document.querySelector(q+`h_94163738---UoBAHO`).innerText
        = `${parseInt(new Date(d1*45+ctime)/1e3)} (${new Date(d1*45+ctime).toLocaleTimeString(undefined, options)})`;// back
-    }
-    // https://worktile.com/kb/ask/809170.html
-    function lockScreenOrientation() {
-      if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape');
-      } else if (screen.mozLockOrientation) {
-        screen.mozLockOrientation('landscape');
-      } else if (screen.msLockOrientation) {
-        screen.msLockOrientation('landscape');
-      } else if (screen.orientation && screen.orientation.setLock) {
-        screen.orientation.setLock('landscape');
-      }
     }
   </script>
 </body>
