@@ -54,7 +54,7 @@
         <div class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間</div>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select: text!important;">🖱️複製後計算</div>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/31039303" target="_blank" title="用途?">當前時戳<i class="fa-solid fa-circle-question"></i></a></div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD" style="user-select: text!important;">⚙️載入中...</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD" style="user-select: text!important;" contenteditable>⚙️載入中...</div>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB" onclick="copyNow(`94163802---DtaAdD`)">📋複製</div>
         <a class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" href="https://twjmy.github.io/genshin-reunion/"
          style="font-size:x-large;text-decoration:none;width:fit-content;color:#fafaea;background-color:#4986bf;border-radius:0 20px 0 20px;padding:.25em 1.5em 1.25em 1.5em;">
@@ -66,19 +66,34 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
   <script>
     const q = `.src-components-hippo-modals-Reward-__index_---h_`;
-    function startTime() {
+
+    var startTime = async function() {
+      while( document.activeElement === document.querySelector(q+`94163802---DtaAdD`)
+       || document.activeElement === document.querySelector(q+`94163834---lst4oB`) )
+        await new Promise(requestAnimationFrame);
       document.querySelector(q+`94163802---DtaAdD`).innerText = parseInt(Date.now() / 1e3);
       setTimeout(startTime, 1e3 - new Date() % 1e3);
     }
+
+    document.querySelector(q+`94163802---DtaAdD`).addEventListener(`keyup`, async event => {
+      if (event.defaulPrevented) return;
+      switch (event.key) {
+        case `Enter`: return copyNow(`94163802---DtaAdD`);
+      }
+    }, true);
+
     function copyNow(query) {
       const copyText = document.querySelector(q+query);
-      navigator.clipboard.writeText(copyText.innerText);
-      const ctime = copyText.innerText*1e3, options = {
+      const same = copyText.innerText == (
+        copyText.innerText = copyText.innerText.replaceAll(`\n`, ``).replaceAll(` `, ``)
+      );
+      const ctime = copyText.innerText*1e3, d1 = 1e3*60*60*24, options = {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-      }, d1 = 1e3*60*60*24;
+      };
+
       document.querySelector(q+`941631471---Fwl8Ur`).innerText
        = `已複製｢${copyText.innerText}｣ (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
       document.querySelector(q+`94163605---q029wX`).innerHTML
@@ -89,11 +104,14 @@
       document.querySelector(q+`94163738---UoBAHO`).innerText
        = `${parseInt(new Date(d1*45+ctime)/1e3)} (${new Date(d1*45+ctime).toLocaleTimeString(undefined, options)})`;// back
 
-      // https://github.com/tsayen/dom-to-image#usage
-      domtoimage.toBlob(document.querySelector(q+`941632148---bSTMA9`))
-        .then(function (blob) {
-            window.saveAs(blob, `${copyText.innerText}.png`);
-        });
+      if ( same ){
+        navigator.clipboard.writeText(copyText.innerText);
+        // https://github.com/tsayen/dom-to-image#usage
+        domtoimage.toBlob(document.querySelector(q+`941632148---bSTMA9`))
+          .then(function (blob) {
+              window.saveAs(blob, `${copyText.innerText}.png`);
+          });
+      }
     }
     screen.orientation.lock('landscape');
   </script>
