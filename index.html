@@ -91,17 +91,15 @@
     document.querySelector(q+`94163802---DtaAdD`).addEventListener(`keyup`, async event => {
       if (event.defaulPrevented) return;
       switch (event.key) {
-        case `Enter`: return copyNow();
+        case `Enter`: return copyNow(false);
       }
     }, true);
 
     var returnee = false;
 
-    function copyNow() {
+    function copyNow(save=true) {
       var copyText = document.querySelector(q+`94163802---DtaAdD`);
-      const same = copyText == (
-        copyText.innerText = copyText.innerText.replaceAll(`\n`, ``).replaceAll(` `, ``)
-      );
+      copyText.innerText = copyText.innerText.replaceAll(`\n`, ``).replaceAll(` `, ``)
       copyText = copyText.innerText;
       const ctime = copyText*1e3, d1 = 1e3*60*60*24, options = {
         weekday: 'long',
@@ -124,15 +122,16 @@
       `;// 下次回歸時間
 
        document.querySelector(q+`94163605---q029wX`).innerHTML = `
-        ${returnee?`45天後`:`兩個禮拜以後`} 
+        ${returnee?`<font color="#f78a2d">45天後`:`兩個禮拜以後`} 
         ${parseInt(new Date(d1*(returnee?45:14)+ctime)/1e3)} 
         (${new Date(d1*(returnee?45:14)+ctime).toLocaleTimeString(undefined, options)})
         <br> ${returnee?`15天前`:`31天前`} 
         ${parseInt(new Date( ctime-d1* (returnee?15:31) )/1e3)} 
         (${new Date( ctime-d1* (returnee?15:31) ).toLocaleTimeString(undefined, options)})
+        ${returnee?`</font>`:``}
       `;// 登出時計算
 
-      if ( same ){
+      if(save){
         navigator.clipboard.writeText(copyText);
         // https://github.com/tsayen/dom-to-image#usage
         domtoimage.toBlob(document.querySelector(q+`941632148---bSTMA9`))
@@ -141,7 +140,7 @@
           });
       }
     }
-    document.querySelector(q+`94163834---lst4oB`).addEventListener(`click`, copyNow, true);
+    document.querySelector(q+`94163834---lst4oB`).onclick=copyNow;
 
     document.querySelector(`#returneeGiftsBtn`).addEventListener(`click`, () => {
       if(returnee = !returnee){
@@ -149,15 +148,16 @@
         document.querySelector(q+`94163605---q029wX`).innerHTML=`<font color="#f78a2d">觸發條件：冒險等階30級以上、45天以上未登入遊戲且60天以上未觸發「歸途贈禮」</font>`;
         document.querySelector(q+`94163570---p3KweJ`).innerHTML=`下次登出時間<br><font color="#f78a2d">(15天後)</font>`;
         document.querySelector(q+`94163706---qa1M2w`).innerHTML=`下次回歸時間<br><font color="#f78a2d">(60天後)</font>`;
+        document.querySelector(q+`94163738---UoBAHO`).innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#f78a2d">下面</font>`;
       } else {
         event.target.style.boxShadow = `inherit`;
         document.querySelector(q+`94163605---q029wX`).innerHTML=`觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」`;
         document.querySelector(q+`94163570---p3KweJ`).innerHTML=`下次登出時間<br>(31天後)`;
         document.querySelector(q+`94163706---qa1M2w`).innerHTML=`下次回歸時間<br>(45天後)`;
+        document.querySelector(q+`94163738---UoBAHO`).innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
       }
       document.querySelector(q+`941631471---Fwl8Ur`).innerHTML=`<a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 媒體資源皆取自<a href="https://hoyo.link/dBOiFLAL" target="_blank">©原神官方先行展示網頁</a>`;
       document.querySelector(q+`94163674---_GTw_j`).innerHTML=`🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面`;
-      document.querySelector(q+`94163738---UoBAHO`).innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
     }, true);
 
     screen.orientation.lock('landscape');
