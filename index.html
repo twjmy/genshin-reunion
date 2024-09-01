@@ -92,7 +92,9 @@
     document.querySelector(q+`94163802---DtaAdD`).addEventListener(`keyup`, async event => {
       if (event.defaulPrevented) return;
       switch (event.key) {
-        case `Enter`: return copyNow(event.ctrlKey?true:false);
+        case `Enter`:
+          event.preventDefault();
+          return copyNow(event.ctrlKey?true:false);
       }
     }, true);
 
