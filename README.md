@@ -1,4 +1,4 @@
-# Genshin Impact Stellar Reunion
+# Genshin Impact Stellar Reunion Date Calculation
 
 a traditional chinese web page to calculate the date for Genshin Impact Stellar Reunion event.
 
