@@ -12,7 +12,7 @@
   <style>
     @font-face {
     font-family: hywh; src:
-      url("https://act.hoyoverse.com/ys/event/survey-collection/fonts/default.4b9a2491.ttf"), 
+      url("https://act.hoyoverse.com/ys/event/survey-collection/fonts/default.4b9a2491.ttf"),
       url("https://act-webstatic.hoyoverse.com/font_generate/m20240807hy39n72fwg_hk4e_global_zh-tw_f98br3.woff2"),
       url("https://act-webstatic.hoyoverse.com/font_generate/m20240807hy39n72fwg_hk4e_global_zh-tw_f98br3.woff");
     }
@@ -55,7 +55,7 @@
         <div class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間<br>(45天後)</div>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select:text;">🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/32725526" target="_blank" title="用途?">當前時戳(?)</a>(可輸入)</div>
-        <input type="number" min="1600135200" data-toggle="tooltip" placeholder="Enter計算" title="輸入後Enter計算/Ctrl+Enter計算後複製保存" style="
+        <input type="number" min="1600135200" placeholder="Enter計算" title="輸入後Enter計算複製保存" style="
           background-color:unset;
           outline:none;
           border:none;
@@ -101,20 +101,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
   <script>
-    const q = `.src-components-hippo-modals-Reward-__index_---h_`;
+    const q = `.src-components-hippo-modals-Reward-__index_---h_`,
+      clock = document.querySelector(q+`94163802---DtaAdD`),
+      copyBtn = document.querySelector(q+`94163834---lst4oB`),
+      copyedBlock = document.querySelector(q+`941631471---Fwl8Ur`),
+      quitInfoBlock = document.querySelector(q+`94163605---q029wX`),
+      quitTimeBlock = document.querySelector(q+`94163674---_GTw_j`),
+      quitTimeLabel = document.querySelector(q+`94163570---p3KweJ`),
+      backTimeBlock = document.querySelector(q+`94163738---UoBAHO`),
+      backTimeLabel = document.querySelector(q+`94163706---qa1M2w`);
 
     var startTime = async function() {
-      while( document.activeElement === document.querySelector(q+`94163802---DtaAdD`)
-       || document.activeElement === document.querySelector(q+`94163834---lst4oB`) )
+      while( document.activeElement === clock
+       || document.activeElement === copyBtn )
         await new Promise(requestAnimationFrame);
-      document.querySelector(q+`94163802---DtaAdD`).value = parseInt(Date.now() / 1e3);
+      clock.value = parseInt(Date.now() / 1e3);
       setTimeout(startTime, 1e3 - new Date() % 1e3);
     }
 
     let returnee = false;
 
-    function copyNow(save=true) {
-      var copyText = document.querySelector(q+`94163802---DtaAdD`).value;
+    async function copyNow(save=true) {
+      var copyText = clock.value;
       const ctime = copyText*1e3, d1 = 1e3*60*60*24, options = {
         weekday: 'long',
         year: 'numeric',
@@ -122,26 +130,26 @@
         day: 'numeric',
       };
 
-      document.querySelector(q+`941631471---Fwl8Ur`).innerHTML = `
+      copyedBlock.innerHTML = `
         已複製「<span style="user-select:all">${copyText}</span>」
         (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
 
-      document.querySelector(q+`94163674---_GTw_j`).innerHTML = `
+      quitTimeBlock.innerHTML = `
         <span style="user-select:all">
           ${parseInt(new Date(d1*( returnee?(60-45):(45-14) )+ctime)/1e3)}
         </span>
         (${new Date(d1*( returnee?(60-45):(45-14) )+ctime).toLocaleTimeString(undefined, options)})
       `;// 下次登出時間
 
-      document.querySelector(q+`94163738---UoBAHO`).innerHTML = `
+      backTimeBlock.innerHTML = `
         <span style="user-select:all">
           ${parseInt(new Date(d1*(returnee?60:45)+ctime)/1e3)}
         </span>
         (${new Date(d1*(returnee?60:45)+ctime).toLocaleTimeString(undefined, options)})
       `;// 下次回歸時間
 
-      document.querySelector(q+`94163605---q029wX`).style.top=`5.5rem`;
-      document.querySelector(q+`94163605---q029wX`).innerHTML = `
+      quitInfoBlock.style.top=`5.5rem`;
+      quitInfoBlock.innerHTML = `
         登出${returnee?`<font color="#f78a2d">45天後</font>`:`兩個禮拜以後`}
         <span style="user-select:all">
           ${parseInt(new Date(d1*(returnee?45:14)+ctime)/1e3)}</span>
@@ -152,17 +160,21 @@
         (${new Date( ctime-d1* (returnee?15:31) ).toLocaleTimeString(undefined, options)})
       `;// 登出時計算
 
+      for(const e of document.querySelectorAll(`span`)){
+        e.addEventListener(`click`,event=>navigator.clipboard.writeText(event.target.innerText),true);
+      }
+
       if(save){
         navigator.clipboard.writeText(copyText);
         // https://github.com/tsayen/dom-to-image#usage
-        domtoimage.toBlob(document.querySelector(q+`941632148---bSTMA9`))
+        domtoimage.toBlob(document.documentElement)
           .then(function (blob) {
               window.saveAs(blob, `${copyText}.png`);
           });
       }
     }
 
-    document.querySelector(q+`94163834---lst4oB`).onclick=copyNow;
+    copyBtn.onclick=copyNow;
 
     document.querySelector(q+`941632148---bSTMA9`).addEventListener(`submit`, async event => {
       if (event.defaulPrevented) return;
@@ -170,24 +182,24 @@
       copyNow(true);
     }, true);
 
-    document.querySelector(`#returneeGiftsBtn`).addEventListener(`click`, () => {
+    returneeGiftsBtn.addEventListener(`click`, async event => {
       if(returnee = !returnee){
         event.target.style.boxShadow = `inset 0px 0px 0px 3px red`;
-        document.querySelector(`#IntertwinedFate`).style.display=`block`;
-        document.querySelector(q+`94163605---q029wX`).innerHTML=`<font color="#f78a2d">觸發條件：冒險等階30級以上、45天以上未登入遊戲且60天以上未觸發「歸途贈禮」</font>`;
-        document.querySelector(q+`94163570---p3KweJ`).innerHTML=`下次登出時間<br><font color="#f78a2d">(15天後)</font>`;
-        document.querySelector(q+`94163706---qa1M2w`).innerHTML=`下次回歸時間<br><font color="#f78a2d">(60天後)</font>`;
+        IntertwinedFate.style.display=`block`;
+        quitInfoBlock.innerHTML=`<font color="#f78a2d">觸發條件：冒險等階30級以上、45天以上未登入遊戲且60天以上未觸發「歸途贈禮」</font>`;
+        quitTimeLabel.innerHTML=`下次登出時間<br><font color="#f78a2d">(15天後)</font>`;
+        backTimeLabel.innerHTML=`下次回歸時間<br><font color="#f78a2d">(60天後)</font>`;
       } else {
         event.target.style.boxShadow = `inherit`;
         document.querySelector(`#IntertwinedFate`).style.display=`none`;
-        document.querySelector(q+`94163605---q029wX`).innerHTML=`觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」`;
-        document.querySelector(q+`94163570---p3KweJ`).innerHTML=`下次登出時間<br>(31天後)`;
-        document.querySelector(q+`94163706---qa1M2w`).innerHTML=`下次回歸時間<br>(45天後)`;
+        quitInfoBlock.innerHTML=`觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」`;
+        quitTimeLabel.innerHTML=`下次登出時間<br>(31天後)`;
+        backTimeLabel.innerHTML=`下次回歸時間<br>(45天後)`;
       }
-      document.querySelector(q+`94163605---q029wX`).style.removeProperty(`top`);
-      document.querySelector(q+`941631471---Fwl8Ur`).innerHTML=`<a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 媒體資源皆取自<a href="https://hoyo.link/dBOiFLAL" target="_blank">©原神官方先行展示網頁</a>`;
-      document.querySelector(q+`94163674---_GTw_j`).innerHTML=`🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面`;
-      document.querySelector(q+`94163738---UoBAHO`).innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
+      quitInfoBlock.style.removeProperty(`top`);
+      copyedBlock.innerHTML=`<a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 媒體資源皆取自<a href="https://hoyo.link/dBOiFLAL" target="_blank">©原神官方先行展示網頁</a>`;
+      quitTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面`;
+      backTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
     }, true);
 
     screen.orientation.lock('landscape');
