@@ -8,6 +8,7 @@
   <link id="icon" rel="shortcut icon" href="https://genshin.hoyoverse.com/favicon.ico">
   <link rel="stylesheet" href="https://act.hoyoverse.com/ys/event/e20240413preview-pvtga2/styles_7654e533d9a302126101.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
   <style>
     @font-face {
       font-family: font;
@@ -34,46 +35,67 @@
         bottom: 100%;
       }
     }
-
-    body .src-components-hippo-modals-Reward-__index_---container---zjR_sr .src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf .src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 .src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW {
-      background-color: #4986bf;
-      color: #fafaea;
-      font-size: x-large;
-      text-decoration: none;
-      width: fit-content;
-      height: fit-content;
-      border-radius: 0 20px;
-      padding: .25em 1.5em;
-    }
   </style>
 </head>
 
 <body onload="startTime()">
   <div class="src-components-hippo-modals-Reward-__index_---container---zjR_sr">
     <div class="src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf">
-      <div class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="user-select: text!important;">
+      <form class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="display:block;user-select:text;">
           觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」</div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select: text!important;">
+        <div class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
           <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 媒體資源皆取自
           <a href="https://hoyo.link/dBOiFLAL" target="_blank">©原神官方先行展示網頁</a>
         </div>
         <div class="src-components-hippo-modals-Reward-__index_---h_941631976---YeiL8w" style="background-image: none;">
           <div class="src-components-hippo-modals-Reward-__index_---h_94163570---p3KweJ">下次登出時間<br>(31天後)</div>
         </div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select: text!important;">🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select:text;">🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面</div>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間<br>(45天後)</div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select: text!important;">🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/32725526" target="_blank" title="用途?">當前時戳(?)</a></div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD" style="user-select: text!important;outline:none;" contenteditable>⚙️載入中...</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select:text;">🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/32725526" target="_blank" title="用途?">當前時戳(?)</a>(可輸入)</div>
+        <input type="number" min="1600135200" data-toggle="tooltip" placeholder="Enter計算" title="輸入後Enter計算/Ctrl+Enter計算後複製保存" style="
+          background-color:unset;
+          outline:none;
+          border:none;
+        " class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD" />
         <div class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB">📋複製</div>
-        <a class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" href="https://twjmy.github.io/genshin-reunion/">
+        <a href="https://twjmy.github.io/genshin-reunion/" style="
+          background-color: #4c86e8;
+          color: #fafaea;
+          font-size: x-large;
+          text-decoration: none;
+          width: fit-content;
+          height: fit-content;
+          border-radius: 0 20px;
+          padding: .05em 1.5em;
+        " class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW">
           回歸時間計算</a>
-        <a id="returneeGiftsBtn" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" href="#"
-          style="font-size:medium;left:6.4rem;top:2.4rem;padding:.3em .75em;border-radius:5px;color:#fffcdd;background-color:#f78a2d;">
+        <a href="#" id="returneeGiftsBtn" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" style="
+          width: fit-content;
+          height: fit-content;
+          text-decoration: none;
+          font-size:medium;
+          left:6.4rem;
+          top:2.3rem;
+          padding:.3em .75em;
+          border-radius:5px;
+          color:#fffcdd;
+          background-color:#f78a2d;">
           切換歸途贈禮</a>
-        <div id="IntertwinedFate" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" style="display:none;background-image: url(https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/object/Intertwined%2520Fate_icon.png);background-color:unset;height:100px;width:100px;left:12.4rem;top:3.5rem;border-radius: 100%;box-shadow: 0 0 20px #f78a2d inset;"></div>
-      </div>
+        <div id="IntertwinedFate" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" style="
+          background-image: url(https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/object/Intertwined%2520Fate_icon.png);
+          background-color:unset;
+          box-shadow: 0 0 20px #f78a2d inset;
+          border-radius: 100%;
+          height: 100px;
+          width: 100px;
+          left: 12.4rem;
+          top: 3.5rem;
+          display:none;
+        "></div>
+      </form>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
@@ -85,25 +107,14 @@
       while( document.activeElement === document.querySelector(q+`94163802---DtaAdD`)
        || document.activeElement === document.querySelector(q+`94163834---lst4oB`) )
         await new Promise(requestAnimationFrame);
-      document.querySelector(q+`94163802---DtaAdD`).innerText = parseInt(Date.now() / 1e3);
+      document.querySelector(q+`94163802---DtaAdD`).value = parseInt(Date.now() / 1e3);
       setTimeout(startTime, 1e3 - new Date() % 1e3);
     }
 
-    document.querySelector(q+`94163802---DtaAdD`).addEventListener(`keydown`, async event => {
-      if (event.defaulPrevented) return;
-      switch (event.key) {
-        case `Enter`:
-          event.preventDefault();
-          return copyNow(event.ctrlKey?true:false);
-      }
-    }, true);
-
-    var returnee = false;
+    let returnee = false;
 
     function copyNow(save=true) {
-      var copyText = document.querySelector(q+`94163802---DtaAdD`);
-      copyText.innerText = copyText.innerText.replaceAll(`\n`, ``).replaceAll(` `, ``)
-      copyText = copyText.innerText;
+      var copyText = document.querySelector(q+`94163802---DtaAdD`).value;
       const ctime = copyText*1e3, d1 = 1e3*60*60*24, options = {
         weekday: 'long',
         year: 'numeric',
@@ -111,27 +122,33 @@
         day: 'numeric',
       };
 
-      document.querySelector(q+`941631471---Fwl8Ur`).innerText
-       = `已複製｢${copyText}｣ (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
+      document.querySelector(q+`941631471---Fwl8Ur`).innerHTML = `
+        已複製「<span style="user-select:all">${copyText}</span>」
+        (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
 
-      document.querySelector(q+`94163674---_GTw_j`).innerText = `
-        ${parseInt(new Date(d1*( returnee?(60-45):(45-14) )+ctime)/1e3)} 
+      document.querySelector(q+`94163674---_GTw_j`).innerHTML = `
+        <span style="user-select:all">
+          ${parseInt(new Date(d1*( returnee?(60-45):(45-14) )+ctime)/1e3)}
+        </span>
         (${new Date(d1*( returnee?(60-45):(45-14) )+ctime).toLocaleTimeString(undefined, options)})
       `;// 下次登出時間
 
-      document.querySelector(q+`94163738---UoBAHO`).innerText = `
-        ${parseInt(new Date(d1*(returnee?60:45)+ctime)/1e3)} 
+      document.querySelector(q+`94163738---UoBAHO`).innerHTML = `
+        <span style="user-select:all">
+          ${parseInt(new Date(d1*(returnee?60:45)+ctime)/1e3)}
+        </span>
         (${new Date(d1*(returnee?60:45)+ctime).toLocaleTimeString(undefined, options)})
       `;// 下次回歸時間
 
-       document.querySelector(q+`94163605---q029wX`).innerHTML = `
-        ${returnee?`<font color="#f78a2d">45天後`:`兩個禮拜以後`} 
-        ${parseInt(new Date(d1*(returnee?45:14)+ctime)/1e3)} 
+      document.querySelector(q+`94163605---q029wX`).innerHTML = `
+        ${returnee?`<font color="#f78a2d">45天後</font>`:`兩個禮拜以後`}
+        <span style="user-select:all">
+          ${parseInt(new Date(d1*(returnee?45:14)+ctime)/1e3)}</span>
         (${new Date(d1*(returnee?45:14)+ctime).toLocaleTimeString(undefined, options)})
-        <br> ${returnee?`15天前`:`31天前`} 
-        ${parseInt(new Date( ctime-d1* (returnee?15:31) )/1e3)} 
+        <br> ${returnee?`<font color="#f78a2d">15天前</font>`:`31天前`}
+        <span style="user-select:all">
+          ${parseInt(new Date( ctime-d1* (returnee?15:31) )/1e3)}</span>
         (${new Date( ctime-d1* (returnee?15:31) ).toLocaleTimeString(undefined, options)})
-        ${returnee?`</font>`:``}
       `;// 登出時計算
 
       if(save){
@@ -143,7 +160,13 @@
           });
       }
     }
+
     document.querySelector(q+`94163834---lst4oB`).onclick=copyNow;
+
+    document.querySelector(q+`941632148---bSTMA9`).addEventListener(`submit`, async event => {
+      if (event.defaulPrevented) return;
+      copyNow(true);
+    }, true);
 
     document.querySelector(`#returneeGiftsBtn`).addEventListener(`click`, () => {
       if(returnee = !returnee){
