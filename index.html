@@ -18,7 +18,7 @@
     }
 
     @media (prefers-color-scheme: dark) {
-      html, body {
+      body {
         background-color: #0c0f1d;
         color: white;
       }
@@ -39,28 +39,28 @@
 </head>
 
 <body onload="startTime()">
-  <div class="src-components-hippo-modals-Reward-__index_---container---zjR_sr">
+  <div id="whole" class="src-components-hippo-modals-Reward-__index_---container---zjR_sr">
     <div class="src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf">
-      <form class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="display:block;z-index:1;user-select:text;">
+      <form id="formModal" class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
+        <div id="quitInfoBlock" class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="display:block;z-index:1;user-select:text;">
           觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」</div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
+        <div id="copyedBlock" class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
           <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 媒體資源皆取自
           <a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>
         </div>
         <div class="src-components-hippo-modals-Reward-__index_---h_941631976---YeiL8w" style="background-image: none;">
-          <div class="src-components-hippo-modals-Reward-__index_---h_94163570---p3KweJ">下次登出時間<br>(31天後)</div>
+          <div id="quitTimeLabel" class="src-components-hippo-modals-Reward-__index_---h_94163570---p3KweJ">下次登出時間<br>(31天後)</div>
         </div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select:text;">🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面</div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間<br>(45天後)</div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select:text;">🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/32725526" target="_blank" title="用途?">當前時戳(?)</a>(可輸入)</div>
+        <div id="quitTimeBlock" class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select:text;">🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面</div>
+        <div id="backTimeLabel" class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間<br>(45天後)</div>
+        <div id="backTimeBlock" class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select:text;">🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
+        <div id="clock" class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/32725526" target="_blank" title="用途?">當前時戳(?)</a>(可輸入)</div>
         <input type="number" min="1600135200" placeholder="Enter計算" title="輸入後Enter計算複製保存" style="
           background-color:unset;
           outline:none;
           border:none;
-        " class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD" />
-        <div class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB">📋複製</div>
+        " class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD"/>
+        <div id="copyBtn" class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB">📋複製</div>
         <a href="https://twjmy.github.io/genshin-reunion/" style="
           background-color: #4c86e8;
           color: #fafaea;
@@ -87,7 +87,7 @@
         <div id="IntertwinedFate" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" style="
           background-image: url(https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/object/Intertwined%2520Fate_icon.png);
           background-color:unset;
-          box-shadow: 0 0 20px #f78a2d inset;
+          box-shadow: 0 0 20px #fee27b inset;
           border-radius: 100%;
           height: 100px;
           width: 100px;
@@ -101,23 +101,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
   <script>
-    const q = `.src-components-hippo-modals-Reward-__index_---h_`,
-      clock = document.querySelector(q+`94163802---DtaAdD`),
-      copyBtn = document.querySelector(q+`94163834---lst4oB`),
-      copyedBlock = document.querySelector(q+`941631471---Fwl8Ur`),
-      quitInfoBlock = document.querySelector(q+`94163605---q029wX`),
-      quitTimeBlock = document.querySelector(q+`94163674---_GTw_j`),
-      quitTimeLabel = document.querySelector(q+`94163570---p3KweJ`),
-      backTimeBlock = document.querySelector(q+`94163738---UoBAHO`),
-      backTimeLabel = document.querySelector(q+`94163706---qa1M2w`);
-
-    var startTime = async function() {
-      while( document.activeElement === clock
-       || document.activeElement === copyBtn )
-        await new Promise(requestAnimationFrame);
-      clock.value = parseInt(Date.now() / 1e3);
-      setTimeout(startTime, 1e3 - new Date() % 1e3);
-    }
+    const clock = document.querySelector(`.src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD`),
+      startTime = async function() {
+        while( document.activeElement === clock
+        || document.activeElement === copyBtn )
+          await new Promise(requestAnimationFrame);
+        clock.value = parseInt(Date.now() / 1e3);
+        setTimeout(startTime, 1e3 - new Date() % 1e3);
+      };
 
     let returnee = false;
 
@@ -167,7 +158,7 @@
       if(save){
         navigator.clipboard.writeText(copyText);
         // https://github.com/tsayen/dom-to-image#usage
-        domtoimage.toBlob(document.documentElement)
+        domtoimage.toBlob(whole)
           .then(function (blob) {
               window.saveAs(blob, `${copyText}.png`);
           });
@@ -176,7 +167,7 @@
 
     copyBtn.onclick=copyNow;
 
-    document.querySelector(q+`941632148---bSTMA9`).addEventListener(`submit`, async event => {
+    formModal.addEventListener(`submit`, async event => {
       if (event.defaulPrevented) return;
       event.preventDefault();
       copyNow(true);
@@ -184,7 +175,7 @@
 
     returneeGiftsBtn.addEventListener(`click`, async event => {
       if(returnee = !returnee){
-        event.target.style.boxShadow = `inset 0px 0px 0px 3px red`;
+        event.target.style.boxShadow = `inset 0px 0px 10px 3px #fee27b`;
         IntertwinedFate.style.display=`block`;
         quitInfoBlock.innerHTML=`<font color="#f78a2d">觸發條件：冒險等階30級以上、45天以上未登入遊戲且60天以上未觸發「歸途贈禮」</font>`;
         quitTimeLabel.innerHTML=`下次登出時間<br><font color="#f78a2d">(15天後)</font>`;
