@@ -45,8 +45,8 @@
         <div id="quitInfoBlock" class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="display:block;z-index:1;user-select:text;">
           觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」</div>
         <div id="copyedBlock" class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
-          <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a> 媒體資源皆取自
-          <a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>
+          <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a>
+          媒體資源皆取自<a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>
         </div>
         <div class="src-components-hippo-modals-Reward-__index_---h_941631976---YeiL8w" style="background-image: none;">
           <div id="quitTimeLabel" class="src-components-hippo-modals-Reward-__index_---h_94163570---p3KweJ">下次登出時間<br>(31天後)</div>
@@ -188,10 +188,9 @@
         backTimeLabel.innerHTML=`下次回歸時間<br>(45天後)`;
       }
       quitInfoBlock.style.removeProperty(`top`);
-      copyedBlock.innerHTML=`<a href="https://github.com/twjmy" target="_blank">
-        作者<i class="fa-brands fa-fw fa-github"></i>twjmy
-        </a> 媒體資源皆取自<a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁
-      </a>`;
+      copyedBlock.innerHTML=`
+        <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a>
+        媒體資源皆取自<a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>`;
       quitTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面`;
       backTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
     }, true);
