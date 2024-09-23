@@ -39,11 +39,25 @@
 </head>
 
 <body onload="startTime()">
-  <div id="whole" class="src-components-hippo-modals-Reward-__index_---container---zjR_sr">
-    <div class="src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf">
+  <div id="scene" class="src-components-hippo-modals-Reward-__index_---container---zjR_sr" style="
+      /* border: red solid;
+      top: 1.9rem;
+      left: 4.71rem; */
+      width: 15.05rem;
+      height: 6.5rem;">
+    <div id="pic" class="src-components-hippo-modals-Reward-__index_---ys-preview-switch_f4ot7---ggW1uf" style="position: fixed;">
       <form id="formModal" class="src-components-hippo-modals-Reward-__index_---h_941632148---bSTMA9 self-font">
         <div id="quitInfoBlock" class="src-components-hippo-modals-Reward-__index_---h_94163605---q029wX" style="display:block;z-index:1;user-select:text;">
           觸發條件：冒險等階10級以上、14天以上未登入遊戲且45天以上未觸發「星之歸還」</div>
+        <textarea id="note" class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="
+          background-color: unset;
+          outline: none;
+          border: none;
+          top: 3.3rem;
+          z-index: 1;
+          resize: none;
+          field-sizing: content;
+        " placeholder="輸入筆記(例如UID、這是誰的紀錄)"></textarea>
         <div id="copyedBlock" class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
           <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a>
           媒體資源皆取自<a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>
@@ -112,6 +126,8 @@
 
     let returnee = false;
 
+    note.onclick=event=>note.placeholder=note.placeholder?``:`輸入筆記(例如UID、這是誰的紀錄)`;
+
     async function copyNow(save=true) {
       var copyText = clock.value;
       const ctime = copyText*1e3, d1 = 1e3*60*60*24, options = {
@@ -156,11 +172,21 @@
       }
 
       if(save){
+        Object.assign(pic.style, {
+          left: `-1.6rem`,
+          top: `-1.1rem`,
+        });
+        note.placeholder = ``;
         navigator.clipboard.writeText(copyText);
         // https://github.com/tsayen/dom-to-image#usage
-        domtoimage.toBlob(whole)
+        domtoimage.toBlob(scene)
           .then(function (blob) {
               window.saveAs(blob, `${copyText}.png`);
+              Object.assign(pic.style, {
+                left: ``,
+                top: ``,
+              });
+              note.placeholder = `輸入筆記(例如UID、這是誰的紀錄)`;
           });
       }
     }
