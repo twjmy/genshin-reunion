@@ -119,10 +119,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
   <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-    screen.orientation.lock('landscape');
     toggleInput.onclick=event=>
       toggleInput.style.textDecorationLine=toggleInput.style.textDecorationLine?
         ``:`grammar-error`;
@@ -234,6 +230,12 @@
       quitTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面`;
       backTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
     }, true);
+
+    screen.orientation.lock('landscape');
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
   </script>
 </body>
 
