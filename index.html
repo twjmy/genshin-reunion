@@ -207,13 +207,13 @@
       }
     }
 
-    copyBtn.onclick=copyNow(false);
-    saveBtn.onclick=copyNow(true);
+    copyBtn.onclick=()=>copyNow(false);
+    saveBtn.onclick=()=>copyNow(true);
 
     formModal.addEventListener(`submit`, async event => {
       if (event.defaulPrevented) return;
       event.preventDefault();
-      // copyNow(false);
+      copyNow(true);
     }, true);
 
     returneeGiftsBtn.addEventListener(`click`, async event => {
