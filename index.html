@@ -76,7 +76,10 @@
           width: fit-content;
           left: 4.21rem;
         " class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD"/>
-        <div id="copyBtn" class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB">📋複製</div>
+        <div class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB">
+          <a id="copyBtn" href="#" style="text-decoration: none;">📋複製</a>
+          <a id="saveBtn" href="#" style="text-decoration: none;">🖼️保存圖片</a>
+        </div>
         <a href="https://act.hoyolab.com/puzzle/hk4e/pz_aSn14c5ODU" title="點此可查看官方是否有判定回歸" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" style="
           background-color: #4c86e8;
           color: #fafaea;
@@ -129,8 +132,12 @@
     const startTime = async function() {
         while( toggleInput.style.textDecorationLine
         || document.activeElement === clock
-        || document.activeElement === copyBtn )
+        || document.activeElement === copyBtn
+        || document.activeElement === saveBtn ){
+          if(!toggleInput.style.textDecorationLine)
+            toggleInput.style.textDecorationLine = `grammar-error`;
           await new Promise(requestAnimationFrame);
+        }
         clock.value = new Date(new Date-new Date().getTimezoneOffset()*6e4).toISOString().split('.')[0];
         setTimeout(startTime, 1e3 - new Date() % 1e3);
       };
@@ -146,6 +153,7 @@
         day: 'numeric',
       };
 
+      if(!save) navigator.clipboard.writeText(copyText);
       copyedBlock.innerHTML = `
         已複製「<span style="user-select:all">${copyText}</span>」
         (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
@@ -186,7 +194,6 @@
           top: `-1.1rem`,
         });
         note.placeholder = ``;
-        navigator.clipboard.writeText(copyText);
         // https://github.com/tsayen/dom-to-image#usage
         domtoimage.toBlob(scene)
           .then(function (blob) {
@@ -200,7 +207,8 @@
       }
     }
 
-    copyBtn.onclick=copyNow;
+    copyBtn.onclick=copyNow(false);
+    saveBtn.onclick=copyNow(true);
 
     formModal.addEventListener(`submit`, async event => {
       if (event.defaulPrevented) return;
