@@ -216,6 +216,12 @@
       calcNow(true);
     }, true);
 
+    addEventListener(`keydown`, async event => {
+      if (event.defaulPrevented) return;
+      event.preventDefault();
+      if (event.key === 'Enter') calcNow(true);
+    }, true);
+
     returneeGiftsBtn.addEventListener(`click`, async event => {
       if(returnee = !returnee){
         event.target.style.boxShadow = `inset 0px 0px 10px 3px #fee27b`;
