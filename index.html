@@ -57,19 +57,19 @@
           z-index: 1;
           resize: none;
           field-sizing: content;
-        " placeholder="輸入筆記(例如UID、這是誰的紀錄)"></textarea>
-        <div id="copyedBlock" class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
+        " placeholder="輸入筆記(例如UID、這是誰的紀錄)※計算後點擊時戳後複製"></textarea>
+        <div id="calcedBlock" class="src-components-hippo-modals-Reward-__index_---h_941631471---Fwl8Ur" style="user-select:text;">
           <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a>
           媒體資源皆取自<a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>
         </div>
         <div class="src-components-hippo-modals-Reward-__index_---h_941631976---YeiL8w" style="background-image: none;">
           <div id="quitTimeLabel" class="src-components-hippo-modals-Reward-__index_---h_94163570---p3KweJ">下次登出時間<br>(31天後)</div>
         </div>
-        <div id="quitTimeBlock" class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select:text;">🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面</div>
+        <div id="quitTimeBlock" class="src-components-hippo-modals-Reward-__index_---h_94163674---_GTw_j" style="user-select:text;">🖱️計算後顯示<br><font color="red">※觸發時計算看</font>上面</div>
         <div id="backTimeLabel" class="src-components-hippo-modals-Reward-__index_---h_94163706---qa1M2w">下次回歸時間<br>(45天後)</div>
-        <div id="backTimeBlock" class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select:text;">🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
+        <div id="backTimeBlock" class="src-components-hippo-modals-Reward-__index_---h_94163738---UoBAHO" style="user-select:text;">🖱️計算後顯示<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font></div>
         <div style="left: 2.4rem" class="src-components-hippo-modals-Reward-__index_---h_94163770---apu1i8"><a href="https://www.hoyolab.com/article/32725526" target="_blank" title="用途?">當前時戳(?)</a><div id="toggleInput">切換輸入</div></div>
-        <input id="clock" required type="datetime-local" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}" min="2020-09-15T10:00:00" placeholder="Enter計算" title="輸入後Enter計算複製保存" style="
+        <input id="clock" required type="datetime-local" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}" min="2020-09-15T10:00:00" placeholder="Enter計算" title="輸入後Enter計算" style="
           background-color: unset;
           outline: none;
           border: none;
@@ -77,7 +77,7 @@
           left: 4.21rem;
         " class="src-components-hippo-modals-Reward-__index_---h_94163802---DtaAdD"/>
         <div class="src-components-hippo-modals-Reward-__index_---h_94163834---lst4oB">
-          <a id="copyBtn" href="#" style="text-decoration: none;">📋複製時戳</a>
+          <a id="calcBtn" href="#" style="text-decoration: none;">⌛開始計算</a>
           <a id="saveBtn" href="#" style="text-decoration: none;">🖼️保存圖片</a>
         </div>
         <a href="https://act.hoyolab.com/puzzle/hk4e/pz_aSn14c5ODU" title="點此可查看官方是否有判定回歸" class="src-components-hippo-modals-Reward-__index_---h_941631726---cMyhLW" style="
@@ -127,12 +127,12 @@
 
     note.onclick=event=>
       note.placeholder=note.placeholder?
-        ``:`輸入筆記(例如UID、這是誰的紀錄)`;
+        ``:`輸入筆記(例如UID、這是誰的紀錄)※計算後點擊時戳後複製`;
 
     const startTime = async function() {
         while( toggleInput.style.textDecorationLine
         || document.activeElement === clock
-        || document.activeElement === copyBtn
+        || document.activeElement === calcBtn
         || document.activeElement === saveBtn ){
           if(!toggleInput.style.textDecorationLine)
             toggleInput.style.textDecorationLine = `grammar-error`;
@@ -144,19 +144,19 @@
 
     let returnee = false;
 
-    async function copyNow(save=true) {
-      var copyText = new Date().getTimezoneOffset()*60+clock.valueAsNumber/1e3;
-      const ctime = copyText*1e3, d1 = 1e3*60*60*24, options = {
+    async function calcNow(save=true) {
+      var calcText = new Date().getTimezoneOffset()*60+clock.valueAsNumber/1e3;
+      const ctime = calcText*1e3, d1 = 1e3*60*60*24, options = {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
       };
 
-      if(!save) navigator.clipboard.writeText(copyText);
-      copyedBlock.innerHTML = `
-        已複製「<span style="user-select:all">${copyText}</span>」
-        (${new Date(ctime).toLocaleTimeString(undefined, options)})`;// copy
+      // if(!save) navigator.clipboard.writeText(calcText);
+      calcedBlock.innerHTML = `
+        「<span style="user-select:all">${calcText}</span>」
+        (${new Date(ctime).toLocaleTimeString(undefined, options)})的計算結果`;// calc
 
       quitTimeBlock.innerHTML = `
         <span style="user-select:all">
@@ -197,23 +197,23 @@
         // https://github.com/tsayen/dom-to-image#usage
         domtoimage.toBlob(scene)
           .then(function (blob) {
-              window.saveAs(blob, `${copyText}.png`);
+              window.saveAs(blob, `${calcText}.png`);
               Object.assign(pic.style, {
                 left: ``,
                 top: ``,
               });
-              note.placeholder = `輸入筆記(例如UID、這是誰的紀錄)`;
+              note.placeholder = `輸入筆記(例如UID、這是誰的紀錄)※計算後點擊時戳後複製`;
           });
       }
     }
 
-    copyBtn.onclick=()=>copyNow(false);
-    saveBtn.onclick=()=>copyNow(true);
+    calcBtn.onclick=()=>calcNow(false);
+    saveBtn.onclick=()=>calcNow(true);
 
     formModal.addEventListener(`submit`, async event => {
       if (event.defaulPrevented) return;
       event.preventDefault();
-      copyNow(true);
+      calcNow(true);
     }, true);
 
     returneeGiftsBtn.addEventListener(`click`, async event => {
@@ -231,11 +231,11 @@
         backTimeLabel.innerHTML=`下次回歸時間<br>(45天後)`;
       }
       quitInfoBlock.style.removeProperty(`top`);
-      copyedBlock.innerHTML=`
+      calcedBlock.innerHTML=`
         <a href="https://github.com/twjmy" target="_blank">作者<i class="fa-brands fa-fw fa-github"></i>twjmy</a>
         媒體資源皆取自<a href="https://hoyo.link/4zRkFHAL" target="_blank">©原神官方先行展示網頁</a>`;
-      quitTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※觸發時計算看</font>上面`;
-      backTimeBlock.innerHTML=`🖱️複製後計算<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
+      quitTimeBlock.innerHTML=`🖱️計算後顯示<br><font color="red">※觸發時計算看</font>上面`;
+      backTimeBlock.innerHTML=`🖱️計算後顯示<br><font color="red">※登出時計算看</font><font color="#627a90">下面</font>`;
     }, true);
 
     screen.orientation.lock('landscape');
